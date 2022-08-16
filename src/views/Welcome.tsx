@@ -8,7 +8,7 @@ export const Welcome = defineComponent({
     return () => (<div class={s.wrapper}>
     <header>
       <img src={logo} alt="logo" />
-      <h1>Welcome to Mangosteen</h1>
+      <h1>Mangosteen</h1>
     </header>
     <main> <RouterView /> </main>
     </div>
