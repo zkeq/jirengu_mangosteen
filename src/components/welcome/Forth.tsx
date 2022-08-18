@@ -3,7 +3,7 @@ import cloud from '../../assets/icons/cloud.svg';
 export const Forth = () => (
   <div class={s.card}>
     <img class={s.icon} src={cloud} />
-    <h2>每日提醒<br />不遗漏每一笔账单</h2>
+    <h2>云备份<br />再也不怕数据丢失</h2>
   </div>
 )
 

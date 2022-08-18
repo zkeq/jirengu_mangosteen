@@ -4,7 +4,7 @@ export const Third = () => {
   return (
     <div class={s.card}>
       <img class={s.icon} src={chart} />
-      <h2>每日提醒<br />不遗漏每一笔账单</h2>
+      <h2>数据可视化<br />收支一目了然</h2>
     </div>
   )
 }
