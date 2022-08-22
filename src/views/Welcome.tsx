@@ -1,11 +1,11 @@
-import { defineComponent, ref, Transition, VNode, watchEffect } from 'vue';
+import { defineComponent, Ref, ref, Transition, VNode, watchEffect } from 'vue';
 import { RouteLocationNormalizedLoaded, RouterView } from 'vue-router';
-import s from './Welcome.module.scss'
 import { useSwipe } from '../hooks/useSwipe';
+import s from './Welcome.module.scss'
 export const Welcome = defineComponent({
   setup: (props, context) => {
     const main = ref<HTMLElement | null>(null)
-    const { direction, swiping } = useSwipe(main)
+    const { direction, swiping } = useSwipe(main as Ref<HTMLElement | null>)
     watchEffect(() => {
       console.log(swiping.value, direction.value)
     })
@@ -14,7 +14,7 @@ export const Welcome = defineComponent({
         <svg>
           <use xlinkHref='#mangosteen'></use>
         </svg>
-        <h1>Mangosteen</h1>
+        <h1>山竹记账</h1>
       </header>
       <main class={s.main} ref={main}>
         <RouterView name="main">
