@@ -1,6 +1,6 @@
-import { defineComponent, PropType } from 'vue';
-import { Icon } from './Icon';
+import { defineComponent, PropType, ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import { Icon } from './Icon';
 import s from './Overlay.module.scss';
 export const Overlay = defineComponent({
   props: {
@@ -16,27 +16,27 @@ export const Overlay = defineComponent({
     return () => <>
       <div class={s.mask} onClick={close}></div>
       <div class={s.overlay}>
-      <section class={s.currentUser} onClick={onClickSignIn}>
+        <section class={s.currentUser} onClick={onClickSignIn}>
           <h2>未登录用户</h2>
           <p>点击这里登录</p>
         </section>
         <nav>
-        <ul class={s.action_list}>
+          <ul class={s.action_list}>
             <li>
-            <RouterLink to="/statistics" class={s.action}>
+              <RouterLink to="/statistics" class={s.action}>
                 <Icon name="charts" class={s.icon} />
                 <span>统计图表</span>
               </RouterLink>
             </li>
             <li>
-            <RouterLink to="/export" class={s.action}>
-                <Icon name="export" class={s.icon}/>
+              <RouterLink to="/export" class={s.action}>
+                <Icon name="export" class={s.icon} />
                 <span>导出数据</span>
               </RouterLink>
             </li>
             <li>
-            <RouterLink to="/notify" class={s.action}>
-                <Icon name="notify" class={s.icon}/>
+              <RouterLink to="/notify" class={s.action}>
+                <Icon name="notify" class={s.icon} />
                 <span>记账提醒</span>
               </RouterLink>
             </li>
@@ -45,4 +45,21 @@ export const Overlay = defineComponent({
       </div>
     </>
   }
-}) 
+})
+
+
+export const OverlayIcon = defineComponent({
+  setup: (props, context) => {
+    const refOverlayVisible = ref(false)
+    const onClickMenu = () => {
+      refOverlayVisible.value = !refOverlayVisible.value
+    }
+    return () => <>
+      <Icon name="menu" class={s.icon} onClick={onClickMenu} />
+      {refOverlayVisible.value &&
+        <Overlay onClose={() => refOverlayVisible.value = false} />
+      }
+    </>
+
+  }
+})
