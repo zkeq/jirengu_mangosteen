@@ -9,6 +9,7 @@ export const Form = defineComponent({
       type: Function as PropType<(e: Event) => void>,
     }
   },
+  emits: ['update:modelValue'],
   setup: (props, context) => {
     return () => (
       <form class={s.form} onSubmit={props.onSubmit}>
