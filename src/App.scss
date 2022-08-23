@@ -8,10 +8,18 @@ body {
     "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti",
     SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
   font-size: 16px;
-  line-height: 1.5;
   color: #333;
-  background-color: #fff;
 }
+
 ::webkit-scrollbar {
   visibility: hidden;
+}
+
+.customTabs_tabs_nav {
+  justify-content: flex-start;
+  & > &_item {
+    flex-grow: 0;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
