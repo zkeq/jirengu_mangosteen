@@ -12,7 +12,9 @@ export type IconName =
   | "charts"
   | "notify"
   | "export"
-  | 'left';
+  | 'left'
+  | 'notes' 
+  | 'date';
 
 export const Icon = defineComponent({
   props: {
