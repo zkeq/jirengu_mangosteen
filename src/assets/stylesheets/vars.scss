@@ -1,7 +1,6 @@
 :root {
   --welcome-card-bg: white;
   --welcome-text: white;
-  --z-index-bottom-nav: 10;
   --welcome-bg-start: #5d33be;
   --welcome-bg-end: #8f4cd7;
   --welcome-nav-height: 64px;
@@ -9,7 +8,7 @@
   --z-index-bottom-nav: 8;
   --z-index-overlay: 16;
   --transition-duration: 0.5s;
-  --button-bg: #5C33BE;
+  --button-bg: #5c33be;
   --button-text: white;
   --button-font-size: 18px;
   --button-radius: 8px;
@@ -21,14 +20,21 @@
   --navbar-text: white;
   --overlay-mask-bg: rgba(0, 0, 0, 0.5);
   --overlay-bg: white;
-  --top-safe-area-height: 24px;
-  --overlay-user-bg: #5C33BE;
+  --overlay-user-bg: #5c33be;
   --overlay-user-text: white;
+  --top-safe-area-height: 24px;
   --tabs-indicator-bg: rgba(255, 255, 255, 0.5);
   --button-border-color: #ddd;
-  --amount-text: #53A867;
+  --amount-text: #53a867;
   --date-text: #999999;
   --button-bg: white;
-  --button-bg-important: #5C33BE;
-  --button-text-important:white;
+  --button-bg-important: #5c33be;
+  --button-text-important: white;
+  --input-min-height: 48px;
+  --input-border-color: #5c33be;
+  --input-radius: var(--button-radius);
+  --input-shadow: rgba(0,0,0,0.25);
+  --error-color: #E10505;
+  --emoji-nav-text: #999;
+  --emoji-nav-text-selected: #333;
 }
