@@ -1,10 +1,10 @@
-import { routes } from './config/routes';
+import { routes } from './config/routes'
 import { createApp } from 'vue'
 import { App } from './App'
 import { createRouter } from 'vue-router'
-import { history } from './shared/history';
-import '@svgstore';
-import { fetchMe, mePromise } from './shared/me';
+import { history } from './shared/history'
+import '@svgstore'
+import { fetchMe, mePromise } from './shared/me'
 
 const router = createRouter({ history, routes })
 
@@ -14,7 +14,7 @@ const whiteList: Record<string, 'exact' | 'startsWith'> = {
   '/': 'exact',
   '/start': 'exact',
   '/welcome': 'startsWith',
-  '/sign_in': 'startsWith',
+  '/sign_in': 'startsWith'
 }
 
 router.beforeEach((to, from) => {

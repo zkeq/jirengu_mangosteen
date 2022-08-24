@@ -1,5 +1,5 @@
-import { AxiosResponse } from "axios";
-import { http } from "./Http"
+import { AxiosResponse } from 'axios'
+import { http } from './Http'
 
 export let mePromise: Promise<AxiosResponse<Resource<User>>> | undefined
 

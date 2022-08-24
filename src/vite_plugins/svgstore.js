@@ -5,7 +5,7 @@ import store from 'svgstore' // 用于制作 SVG Sprites
 import { optimize } from 'svgo' // 用于优化 SVG 文件
 
 export const svgstore = (options = {}) => {
-  const inputFolder = options.inputFolder || 'src/assets/icons';
+  const inputFolder = options.inputFolder || 'src/assets/icons'
   return {
     name: 'svgstore',
     resolveId(id) {
@@ -15,19 +15,23 @@ export const svgstore = (options = {}) => {
     },
     load(id) {
       if (id === 'svg_bundle.js') {
-        const sprites = store(options);
-        const iconsDir = path.resolve(inputFolder);
+        const sprites = store(options)
+        const iconsDir = path.resolve(inputFolder)
         for (const file of fs.readdirSync(iconsDir)) {
-          const filepath = path.join(iconsDir, file);
+          const filepath = path.join(iconsDir, file)
           const svgid = path.parse(file).name
-          let code = fs.readFileSync(filepath, { encoding: 'utf-8' });
+          let code = fs.readFileSync(filepath, { encoding: 'utf-8' })
           sprites.add(svgid, code)
         }
         const { data: code } = optimize(sprites.toString({ inline: options.inline }), {
           plugins: [
-            'cleanupAttrs', 'removeDoctype', 'removeComments', 'removeTitle', 'removeDesc', 
+            'cleanupAttrs',
+            'removeDoctype',
+            'removeComments',
+            'removeTitle',
+            'removeDesc',
             'removeEmptyAttrs',
-            { name: "removeAttrs", params: { attrs: "(data-name|data-xxx)" } }
+            { name: 'removeAttrs', params: { attrs: '(data-name|data-xxx)' } }
           ]
         })
         return `const div = document.createElement('div')
@@ -51,4 +55,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
-} 
+}

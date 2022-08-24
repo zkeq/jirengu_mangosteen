@@ -4,10 +4,7 @@ interface FData {
 type Rule<T> = {
   key: keyof T
   message: string
-} & (
-    { type: 'required' } |
-    { type: 'pattern', regex: RegExp }
-  )
+} & ({ type: 'required' } | { type: 'pattern'; regex: RegExp })
 type Rules<T> = Rule<T>[]
 export type { Rules, Rule, FData }
 export const validate = <T extends FData>(formData: T, rules: Rules<T>) => {
@@ -15,7 +12,7 @@ export const validate = <T extends FData>(formData: T, rules: Rules<T>) => {
     [k in keyof T]?: string[]
   }
   const errors: Errors = {}
-  rules.map(rule => {
+  rules.map((rule) => {
     const { key, type, message } = rule
     const value = formData[key]
     switch (type) {
@@ -24,13 +21,13 @@ export const validate = <T extends FData>(formData: T, rules: Rules<T>) => {
           errors[key] = errors[key] ?? []
           errors[key]?.push(message)
         }
-        break;
+        break
       case 'pattern':
         if (!isEmpty(value) && !rule.regex.test(value!.toString())) {
           errors[key] = errors[key] ?? []
           errors[key]?.push(message)
         }
-        break;
+        break
       default:
         return
     }

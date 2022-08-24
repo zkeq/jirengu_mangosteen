@@ -1,8 +1,8 @@
-import { computed, onMounted, onUnmounted, ref, Ref } from "vue";
+import { computed, onMounted, onUnmounted, ref, Ref } from 'vue'
 
 type Point = {
-  x: number;
-  y: number;
+  x: number
+  y: number
 }
 
 interface Options {
@@ -19,14 +19,18 @@ export const useSwipe = (element: Ref<HTMLElement | undefined>, options?: Option
   const end = ref<Point>()
   const swiping = ref(false)
   const distance = computed(() => {
-    if (!start.value || !end.value) { return null }
+    if (!start.value || !end.value) {
+      return null
+    }
     return {
       x: end.value.x - start.value.x,
-      y: end.value.y - start.value.y,
+      y: end.value.y - start.value.y
     }
   })
   const direction = computed(() => {
-    if (!distance.value) { return '' }
+    if (!distance.value) {
+      return ''
+    }
     const { x, y } = distance.value
     if (Math.abs(x) > Math.abs(y)) {
       return x > 0 ? 'right' : 'left'
@@ -42,8 +46,10 @@ export const useSwipe = (element: Ref<HTMLElement | undefined>, options?: Option
   }
   const onMove = (e: TouchEvent) => {
     options?.beforeMove?.(e)
-    if (!start.value) { return }
-    end.value = { x: e.touches[0].screenX, y: e.touches[0].screenY, }
+    if (!start.value) {
+      return
+    }
+    end.value = { x: e.touches[0].screenX, y: e.touches[0].screenY }
     options?.afterMove?.(e)
   }
   const onEnd = (e: TouchEvent) => {
@@ -53,13 +59,17 @@ export const useSwipe = (element: Ref<HTMLElement | undefined>, options?: Option
   }
 
   onMounted(() => {
-    if (!element.value) { return }
-    element.value.addEventListener('touchstart', onStart, {passive: false, capture: false})
-    element.value.addEventListener('touchmove', onMove, {passive: false, capture: false})
-    element.value.addEventListener('touchend', onEnd, {passive: false, capture: false})
+    if (!element.value) {
+      return
+    }
+    element.value.addEventListener('touchstart', onStart, { passive: false, capture: false })
+    element.value.addEventListener('touchmove', onMove, { passive: false, capture: false })
+    element.value.addEventListener('touchend', onEnd, { passive: false, capture: false })
   })
   onUnmounted(() => {
-    if (!element.value) { return }
+    if (!element.value) {
+      return
+    }
     element.value.removeEventListener('touchstart', onStart)
     element.value.removeEventListener('touchmove', onMove)
     element.value.removeEventListener('touchend', onEnd)
@@ -67,6 +77,6 @@ export const useSwipe = (element: Ref<HTMLElement | undefined>, options?: Option
   return {
     swiping,
     direction,
-    distance,
+    distance
   }
-} 
+}
