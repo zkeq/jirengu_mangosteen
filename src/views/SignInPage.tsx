@@ -3,6 +3,7 @@ import { defineComponent, PropType, reactive, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useBool } from '../hooks/useBool';
 import { MainLayout } from '../layouts/MainLayout';
+import { BackIcon } from '../shared/BackIcon';
 import { Button } from '../shared/Button';
 import { Form, FormItem } from '../shared/Form';
 import { history } from '../shared/history';
@@ -36,11 +37,8 @@ export const SignInPage = defineComponent({
         { key: 'code', type: 'required', message: '必填' },
       ]))
       if (!hasError(errors)) {
-        const response = await http.post<{ jwt: string }>('/session', formData, 
-        // {
-        //   // params: { _mock: 'session' }
-        // }
-        ).catch(onError)
+        const response = await http.post<{ jwt: string }>('/session', formData)
+          .catch(onError)
         console.log(response)
         localStorage.setItem('jwt', response.data.jwt)
         // router.push('/sign_in?return_to='+ encodeURIComponent(route.fullPath))
@@ -70,7 +68,7 @@ export const SignInPage = defineComponent({
       <MainLayout>{
         {
           title: () => '登录',
-          icon: () => <Icon name="left" />,
+          icon: () => <BackIcon />,
           default: () => (
             <div class={s.wrapper}>
               <div class={s.logo}>
