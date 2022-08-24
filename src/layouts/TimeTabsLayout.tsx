@@ -22,7 +22,8 @@ const demo = defineComponent({
 export const TimeTabsLayout = defineComponent({
   props: {
     component: {
-      type: Object as PropType<typeof demo>,
+      // TODO: 这里的类型我不知道为什么会报错
+      type: Object as any,
       required: true
     }
   },
