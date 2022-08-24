@@ -13,3 +13,5 @@ export const ItemPage = defineComponent({
     return () => <RouterView />
   }
 })
+
+export default ItemPage
