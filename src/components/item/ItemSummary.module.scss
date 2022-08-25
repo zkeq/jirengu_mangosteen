@@ -50,9 +50,10 @@
       .tag{
         color: var(--list-tag-text);
       }
-      // .amount{
-      //   color: var(--list-amount-text);
-      // }
+      .amount{
+        font-family: monospace;
+        font-weight: 600;
+      }
       .expenses{
         color: var(--list-amount-expenses-text);
       }
