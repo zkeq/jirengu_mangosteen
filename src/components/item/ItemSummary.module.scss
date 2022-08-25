@@ -50,8 +50,15 @@
       .tag{
         color: var(--list-tag-text);
       }
-      .amount{
-        color: var(--list-amount-text);
+      // .amount{
+      //   color: var(--list-amount-text);
+      // }
+      .expenses{
+        color: var(--list-amount-expenses-text);
+      }
+      
+      .income{
+        color: var(--list-amount-income-text);
       }
     }
     .time{

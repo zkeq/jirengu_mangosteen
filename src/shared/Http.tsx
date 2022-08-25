@@ -74,6 +74,7 @@ if (DEBUG) {
       mockTagShow
     }) => {
       const mock = (response: AxiosResponse) => {
+        return false
         switch (response.config?._mock) {
           case 'tagIndex':
             ;[response.status, response.data] = mockTagIndex(response.config)
